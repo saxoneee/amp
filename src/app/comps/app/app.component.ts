@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import amplib from 'src/lib/amplib';
+import utils from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,15 @@ export class AppComponent implements OnInit {
   title = 'amp';
 
   ngOnInit(){
+    var _me = this;
+
     amplib.init();
+
+    amplib.onNewAudio(function(pSongData:any){
+      _me.current.title = pSongData.title;
+      _me.current.artist = pSongData.artist;
+      _me.current.duration = utils.secondsToReadable(pSongData.duration);
+    });
   }
 
   public dataSource = [
@@ -32,15 +41,14 @@ export class AppComponent implements OnInit {
   ];
 
   public current = {
-    title: '',
-    artist: '',
+    title: 'no title',
+    artist: 'not artist',
+    duration: '00:00'
   };
 
   getRecord(record:any){
     var _me = this;
 
-    _me.current.title = record.title;
-    _me.current.artist = record.artist;
     amplib.play(record);
   }
 
