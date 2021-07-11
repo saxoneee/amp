@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import amplib from 'src/lib/amplib';
 
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,28 +14,18 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     var _me = this;
 
-    amplib.init();
+    amplib.init().then(function(){
+      console.log('ready');
+      amplib.getList().then(
+        function(pData:any){
+          _me.dataSource.data = pData;
+        }
+      );
+    });
+
   }
 
-  public dataSource = [
-    {
-      title: 'fantastisch',
-      artist: 'Gasmac Gilmore',
-      src: './.assets/fantastisch.mp3'
-    },
-    {
-      title: 'dann ohne mich',
-      artist: 'Donots',
-      src: './.assets/dannohnemich.mp3'
-    },
-    {
-      title: 'Auf die Liebe',
-      artist: 'die Apokalyptischen Reiter',
-      src: './.assets/aufdieliebe.mp3'
-    },
-  ];
-
-
+  public dataSource = new MatTableDataSource<any>();
 
   getRecord(record:any){
     var _me = this;

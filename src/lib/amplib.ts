@@ -3,10 +3,45 @@ export default new class amplib {
 
   private newAudioCallback:any = null;
 
+  private data = [
+    {
+      title: 'fantastisch',
+      artist: 'Gasmac Gilmore',
+      src: './.assets/fantastisch.mp3'
+    },
+    {
+      title: 'dann ohne mich',
+      artist: 'Donots',
+      src: './.assets/dannohnemich.mp3'
+    },
+    {
+      title: 'Auf die Liebe',
+      artist: 'die Apokalyptischen Reiter',
+      src: './.assets/aufdieliebe.mp3'
+    },
+  ];
+
   public init(){
     var _me = this;
 
-    console.log('amplib init');
+    console.log('amplib init start');
+
+    return new Promise((resolve:Function, reject:Function) => {
+      setTimeout(() => {
+        console.log('amplib init done');
+        resolve();
+      }, 1000);
+    });
+  }
+
+  public getList(){
+    var _me = this;
+
+    return new Promise((resolve:Function, reject:Function) => {
+      setTimeout(() => {
+        resolve(_me.data);
+      }, 1000);
+    });
   }
 
   public onNewAudio(pCallback:Function){
