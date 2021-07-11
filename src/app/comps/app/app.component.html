@@ -20,7 +20,7 @@
   <div class="current">
     {{current.title}} - {{current.artist}} - {{current.duration}}
   </div>
-  <button mat-raised-button>play</button>
+  <button mat-raised-button (click)="onResumeClick()">play</button>
   <button mat-raised-button (click)="onPauseClick()">pause</button>
 </div>
 

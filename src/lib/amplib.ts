@@ -46,4 +46,14 @@ export default new class amplib {
 
     _me.player.pause();
   }
+
+  public resume(){
+    var _me = this;
+
+    if(!_me.player){
+      return;
+    }
+
+    _me.player.play();
+  }
 }

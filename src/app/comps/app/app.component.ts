@@ -53,7 +53,10 @@ export class AppComponent implements OnInit {
   }
 
   onPauseClick(){
-    console.log('asdsdfg');
     amplib.pause();
+  }
+
+  onResumeClick(){
+    amplib.resume();
   }
 }
