@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './comps/app/app.component';
+import { Toolbar } from './comps/toolbar/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatButtonModule} from '@angular/material/button';
@@ -11,7 +12,8 @@ import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Toolbar
   ],
   imports: [
     BrowserModule,
