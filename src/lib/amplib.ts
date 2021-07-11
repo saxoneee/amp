@@ -18,6 +18,10 @@ export default new class amplib {
   public play(pSongData:any){
     var _me = this;
 
+    if(_me.player){
+      _me.player.pause();
+    }
+
     _me.player = new Audio(pSongData.src);
 
     _me.player.onloadedmetadata = function() {
