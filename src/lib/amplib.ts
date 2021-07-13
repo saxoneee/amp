@@ -1,4 +1,5 @@
 export default new class amplib {
+  private initialized:boolean = false;
   private player:any = null;
 
   private newAudioCallback:any = null;
@@ -29,6 +30,7 @@ export default new class amplib {
     return new Promise((resolve:Function, reject:Function) => {
       setTimeout(() => {
         console.log('amplib init done');
+        _me.initialized = true;
         resolve();
       }, 1000);
     });
@@ -36,6 +38,12 @@ export default new class amplib {
 
   public getList(){
     var _me = this;
+
+    if(!_me.initialized){
+      throw {
+        msg: 'amplib is not initialized'
+      };
+    }
 
     return new Promise((resolve:Function, reject:Function) => {
       setTimeout(() => {
@@ -52,6 +60,12 @@ export default new class amplib {
 
   public play(pSongData:any){
     var _me = this;
+
+    if(!_me.initialized){
+      throw {
+        msg: 'amplib is not initialized'
+      };
+    }
 
     if(_me.player){
       _me.player.pause();
@@ -75,6 +89,12 @@ export default new class amplib {
   public pause(){
     var _me = this;
 
+    if(!_me.initialized){
+      throw {
+        msg: 'amplib is not initialized'
+      };
+    }
+
     if(!_me.player){
       return;
     }
@@ -84,6 +104,12 @@ export default new class amplib {
 
   public resume(){
     var _me = this;
+
+    if(!_me.initialized){
+      throw {
+        msg: 'amplib is not initialized'
+      };
+    }
 
     if(!_me.player){
       return;
