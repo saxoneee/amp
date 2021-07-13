@@ -9,5 +9,5 @@ music player
 ## dev
 
 * run `npm install` once
-* run `ng serve`
+* run `npm run dev`
 * open http://localhost:4200/
