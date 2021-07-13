@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './comps/app/app.component';
 import { Toolbar } from './comps/toolbar/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventBusService } from './utils/EventBusService';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
@@ -23,7 +24,7 @@ import {MatRippleModule} from '@angular/material/core';
     MatTableModule,
     MatRippleModule,
   ],
-  providers: [],
+  providers: [EventBusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
