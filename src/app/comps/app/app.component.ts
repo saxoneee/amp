@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
 
     amplib.init().then(function(){
       console.log('ready');
-      _me.eventBusService.emit('amplib:ready');
       amplib.getList().then(
         function(pData:any){
           _me.dataSource.data = pData;
@@ -35,5 +34,6 @@ export class AppComponent implements OnInit {
     var _me = this;
 
     amplib.play(record);
+    _me.eventBusService.emit('amplib:play');
   }
 }
