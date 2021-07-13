@@ -23,6 +23,8 @@ export class Visualizer implements OnInit {
   ngOnInit(){
     var _me = this;
 
+    var _loopId:any = null;
+
     _me.eventBusService.on('amplib:play', function(){
       var _audio = amplib.getPlayer(),
        audioCtx = new AudioContext(),
@@ -40,12 +42,20 @@ export class Visualizer implements OnInit {
 
      let data = new Uint8Array(analyser.frequencyBinCount);
 
-     var loopingFunction = function(){
-      requestAnimationFrame(loopingFunction);
+
+     var _cancelLoop = false;
+     if(_loopId){
+      _cancelLoop = true;
+     }
+
+     var _loopFn = function(){
+       if(!_cancelLoop){
+         requestAnimationFrame(_loopFn);
+       }
       analyser.getByteFrequencyData(data);
       draw(data);
     }
-     requestAnimationFrame(loopingFunction);
+     _loopId = requestAnimationFrame(_loopFn);
 
     });
 
